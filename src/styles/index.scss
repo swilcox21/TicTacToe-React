@@ -1,13 +1,38 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
-/* 
+body {
+    background: rgb(214,162,39);
+    background: linear-gradient(90deg, rgba(138, 8, 92, 0.76) 8%, rgba(255,188,0,1) 35%,rgba(255,188,0,1) 65%, rgba(138, 8, 92, 0.76) 92%);
+}
+.container{
+    width: 450px;
+}
+.box {
+    border: 1px solid rgb(32, 73, 97);
+    height: 150px;
+    cursor: pointer;
+}
+.X {
+    font-size: 100px;
+  background: -webkit-radial-gradient(rgb(238, 133, 241), rgba(138, 8, 92, 0.76));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.O {
+    font-size: 100px;
+  background: -webkit-radial-gradient(rgb(238, 133, 241), rgba(138, 8, 92, 0.76));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h1 {
+  background: -webkit-linear-gradient(rgb(28, 83, 56), rgb(47, 130, 133));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
-
-*/
+.resetButton {
+    font-size: 24px;
+    color: rgb(21, 53, 53);
+    background: rgb(214,162,39);
+    background: linear-gradient(90deg, rgba(138, 8, 92, 0.76) 8%, rgba(255,188,0,1) 49%,rgba(255,188,0,1) 51%, rgba(138, 8, 92, 0.76) 92%);
+}
