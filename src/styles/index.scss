@@ -8,9 +8,36 @@ body {
     width: 450px;
 }
 .box {
-    border: 1px solid rgb(32, 73, 97);
     height: 150px;
     cursor: pointer;
+    &.a{
+        border-right: 1px solid rgb(32, 73, 97);
+        border-bottom: 1px solid rgb(32, 73, 97);
+    }
+    &.b{
+        border-bottom: 1px solid rgb(32, 73, 97);
+    }
+    &.c{
+        border-left: 1px solid rgb(32, 73, 97);
+        border-bottom: 1px solid rgb(32, 73, 97);
+    }
+    &.d{
+        border-right: 1px solid rgb(32, 73, 97);
+        border-bottom: 1px solid rgb(32, 73, 97);
+    }
+    &.e{
+        border-bottom: 1px solid rgb(32, 73, 97);
+    }
+    &.f{
+        border-left: 1px solid rgb(32, 73, 97);
+        border-bottom: 1px solid rgb(32, 73, 97);
+    }
+    &.g{
+        border-right: 1px solid rgb(32, 73, 97);
+    }
+    &.i{
+        border-left: 1px solid rgb(32, 73, 97);
+    }
 }
 .X {
     font-size: 100px;

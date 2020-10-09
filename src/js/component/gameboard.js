@@ -49,6 +49,30 @@ export class GameBoard extends React.Component {
 	//     })
 	//     return null
 	// };
+	pickWinner = wArray => {
+		const wCombos = [
+			[0, 1, 2],
+			[3, 4, 5],
+			[6, 7, 8],
+			[0, 3, 6],
+			[1, 4, 7],
+			[2, 5, 8],
+			[0, 4, 8],
+			[2, 4, 6]
+		];
+		for (let i = 0; i < wCombos.length; i++) {
+			const [a, b, c] = wCombos[i];
+			if (
+				wArray[a] &&
+				wArray[a] === wArray[b] &&
+				wArray[a] === wArray[c]
+			) {
+				return wArray[a];
+			}
+		}
+		return null;
+	};
+
 	upDateMove = index => {
 		var newBoxValue = this.state.boxValues.map((item, i) => {
 			if (i == index) {
@@ -65,7 +89,7 @@ export class GameBoard extends React.Component {
 			<div className="text-center mt-5">
 				<div className="container row mx-auto">
 					<div
-						className="box 1 col-4 mx-auto"
+						className="box a col-4 mx-auto"
 						onClick={() => {
 							this.upDateMove(0);
 						}}>
@@ -76,7 +100,7 @@ export class GameBoard extends React.Component {
 								: ""}
 					</div>
 					<div
-						className="box 2 col-4 mx-auto"
+						className="box b col-4 mx-auto"
 						onClick={() => {
 							this.upDateMove(1);
 						}}>
@@ -87,7 +111,7 @@ export class GameBoard extends React.Component {
 								: ""}
 					</div>
 					<div
-						className="box 3 col-4 mx-auto"
+						className="box c col-4 mx-auto"
 						onClick={() => {
 							this.upDateMove(2);
 						}}>
@@ -98,7 +122,7 @@ export class GameBoard extends React.Component {
 								: ""}
 					</div>
 					<div
-						className="box 4 col-4 mx-auto"
+						className="box d col-4 mx-auto"
 						onClick={() => {
 							this.upDateMove(3);
 						}}>
@@ -109,7 +133,7 @@ export class GameBoard extends React.Component {
 								: ""}
 					</div>
 					<div
-						className="box 5 col-4 mx-auto"
+						className="box e col-4 mx-auto"
 						onClick={() => {
 							this.upDateMove(4);
 						}}>
@@ -120,7 +144,7 @@ export class GameBoard extends React.Component {
 								: ""}
 					</div>
 					<div
-						className="box 6 col-4 mx-auto"
+						className="box f col-4 mx-auto"
 						onClick={() => {
 							this.upDateMove(5);
 						}}>
@@ -131,7 +155,7 @@ export class GameBoard extends React.Component {
 								: ""}
 					</div>
 					<div
-						className="box 7 col-4 mx-auto"
+						className="box g col-4 mx-auto"
 						onClick={() => {
 							this.upDateMove(6);
 						}}>
@@ -142,7 +166,7 @@ export class GameBoard extends React.Component {
 								: ""}
 					</div>
 					<div
-						className="box 8 col-4 mx-auto"
+						className="box h col-4 mx-auto"
 						onClick={() => {
 							this.upDateMove(7);
 						}}>
@@ -153,7 +177,7 @@ export class GameBoard extends React.Component {
 								: ""}
 					</div>
 					<div
-						className="box 9 col-4 mx-auto"
+						className="box i col-4 mx-auto"
 						onClick={() => {
 							this.upDateMove(8);
 						}}>
