@@ -45,16 +45,17 @@ export class GameBoard extends React.Component {
 	// 			wArray[a] === wArray[b] &&
 	// 			wArray[a] === wArray[c]
 	// 		) {
-	// 			console.log(wArray[a]);
+	// 			return this.props.onWinner(wArray[a]);
 	// 		}
 	// 	}
 	// 	return null;
 	// };
-	resetBoard = () => {
-		this.setState({
-			boxValues: ["", "", "", "", "", "", "", "", ""]
-		});
-	};
+
+	// resetBoard = () => {
+	// 	this.setState({
+	// 		boxValues: ["", "", "", "", "", "", "", "", ""]
+	// 	});
+	// };
 
 	checkWinningCombo = (winningCombo, wArray) => {
 		var successfulMatches = 0;
@@ -87,6 +88,7 @@ export class GameBoard extends React.Component {
 		});
 		return null;
 	};
+
 	upDateMove = index => {
 		var newBoxValue = this.state.boxValues.map((item, i) => {
 			if (i == index) {
@@ -100,7 +102,10 @@ export class GameBoard extends React.Component {
 	};
 	render() {
 		return (
-			<div className="text-center mt-5">
+			<div
+				className={
+					this.props.player ? "board" : "d-none text-center mt-5"
+				}>
 				<div className="container row mx-auto">
 					<div
 						className="box a col-4 mx-auto"
@@ -205,7 +210,8 @@ export class GameBoard extends React.Component {
 				<p className="lead">
 					<a
 						className="btn btn-lg mt-5 resetButton"
-						onClick={this.resetBoard}
+						// onClick={this.resetBoard}
+						href=""
 						role="button">
 						<strong>
 							<strong>RESET</strong>

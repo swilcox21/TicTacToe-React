@@ -1,12 +1,14 @@
 import React from "react";
 import { GameBoard } from "./gameboard.js";
+import { Players } from "./players.js";
+import PropTypes from "prop-types";
 //create your first component
 
 export class Home extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
-			player: "X",
+			player: null,
 			winner: null
 		};
 	}
@@ -15,6 +17,32 @@ export class Home extends React.Component {
 	};
 	switchPlayer = () => {
 		this.setState({ player: this.state.player == "X" ? "O" : "X" });
+	};
+	newGame = (player, player1, player2) => {
+		this.setState({
+			player: player,
+			player1: player1,
+			player2: player2
+		});
+	};
+	renderMessage = () => {
+		if (this.state.player == null) {
+			return <h1>!! Choose Your Character !!</h1>;
+		} else if (this.state.winner == null) {
+			return (
+				<h2>
+					Hey {this.state.player}
+					<br /> what are you waiting for?
+					<br /> the ice to FREEZE?!
+				</h2>
+			);
+		} else if (this.state.winner != null) {
+			return (
+				<h1>
+					{this.state.winner} wins! {this.state.winner} wins!
+				</h1>
+			);
+		}
 	};
 	render() {
 		return (
@@ -26,7 +54,8 @@ export class Home extends React.Component {
 						Tic Tac Toe board in React.js
 					</strong>
 				</h1>
-				<div>The Winner is {this.state.winner}</div>
+				<h1>{this.renderMessage()}</h1>
+				<Players newGame={this.newGame} player={this.state.player} />
 				<GameBoard
 					switchPlayer={this.switchPlayer}
 					player={this.state.player}
@@ -36,3 +65,8 @@ export class Home extends React.Component {
 		);
 	}
 }
+
+Home.propTypes = {
+	pickWinner: PropTypes.func,
+	onWinner: PropTypes.func
+};

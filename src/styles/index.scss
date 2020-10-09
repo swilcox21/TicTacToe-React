@@ -10,25 +10,14 @@ body {
 .box {
     height: 150px;
     cursor: pointer;
-    &.a{
+    &.a,&.d{
         border-right: 1px solid rgb(32, 73, 97);
         border-bottom: 1px solid rgb(32, 73, 97);
     }
-    &.b{
+    &.b,&.e{
         border-bottom: 1px solid rgb(32, 73, 97);
     }
-    &.c{
-        border-left: 1px solid rgb(32, 73, 97);
-        border-bottom: 1px solid rgb(32, 73, 97);
-    }
-    &.d{
-        border-right: 1px solid rgb(32, 73, 97);
-        border-bottom: 1px solid rgb(32, 73, 97);
-    }
-    &.e{
-        border-bottom: 1px solid rgb(32, 73, 97);
-    }
-    &.f{
+    &.c,&.f{
         border-left: 1px solid rgb(32, 73, 97);
         border-bottom: 1px solid rgb(32, 73, 97);
     }
@@ -56,9 +45,33 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+h2 {
+  background: -webkit-radial-gradient(rgb(238, 133, 241), rgba(138, 8, 92, 0.76));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .resetButton {
     font-size: 24px;
+    color: rgb(21, 53, 53);
+    background: rgb(214,162,39);
+    background: linear-gradient(90deg, rgba(138, 8, 92, 0.76) 8%, rgba(255,188,0,1) 49%,rgba(255,188,0,1) 51%, rgba(138, 8, 92, 0.76) 92%);
+}
+
+#X {
+    margin-top: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+        font-size: 100px;
+    color: rgb(21, 53, 53);
+    background: rgb(214,162,39);
+    background: linear-gradient(90deg, rgba(138, 8, 92, 0.76) 8%, rgba(255,188,0,1) 49%,rgba(255,188,0,1) 51%, rgba(138, 8, 92, 0.76) 92%);
+}
+#O {
+    margin-top: 100px;
+    padding-left: 38px;
+    padding-right: 38px;
+        font-size: 100px;
     color: rgb(21, 53, 53);
     background: rgb(214,162,39);
     background: linear-gradient(90deg, rgba(138, 8, 92, 0.76) 8%, rgba(255,188,0,1) 49%,rgba(255,188,0,1) 51%, rgba(138, 8, 92, 0.76) 92%);
