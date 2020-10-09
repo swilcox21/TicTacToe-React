@@ -28,51 +28,65 @@ export class GameBoard extends React.Component {
 		};
 	}
 	// pickWinner = wArray => {
-	//     const wCombos = [
-	//         [1, 1, 1, 0, 0, 0, 0, 0, 0],
-	//         [0, 0, 0, 1, 1, 1, 0, 0, 0],
-	//         [0, 0, 0, 0, 0, 0, 1, 1, 1],
-	//         [1, 0, 0, 1, 0, 0, 1, 0, 0],
-	//         [0, 1, 0, 0, 1, 0, 0, 1, 0],
-	//         [0, 0, 1, 0, 0, 1, 0, 0, 1],
-	//         [1, 0, 0, 0, 1, 0, 0, 0, 1],
-	//         [0, 0, 1, 0, 1, 0, 1, 0, 0]
-	//     ];
-	//     pickWinner.forEach(winningCombo => {
-	//         var winner = this.checkWinningCombo(
-	//             winningCombo,
-	//             currentSquareValue
-	//         );
-	//         if(winner != null){
-	//             this.props.onWinner(this.props.player)
-	//         }
-	//     })
-	//     return null
+	// 	const wCombos = [
+	// 		[0, 1, 2],
+	// 		[3, 4, 5],
+	// 		[6, 7, 8],
+	// 		[0, 3, 6],
+	// 		[1, 4, 7],
+	// 		[2, 5, 8],
+	// 		[0, 4, 8],
+	// 		[2, 4, 6]
+	// 	];
+	// 	for (let i = 0; i < wCombos.length; i++) {
+	// 		const [a, b, c] = wCombos[i];
+	// 		if (
+	// 			wArray[a] &&
+	// 			wArray[a] === wArray[b] &&
+	// 			wArray[a] === wArray[c]
+	// 		) {
+	// 			console.log(wArray[a]);
+	// 		}
+	// 	}
+	// 	return null;
 	// };
-	pickWinner = wArray => {
-		const wCombos = [
-			[0, 1, 2],
-			[3, 4, 5],
-			[6, 7, 8],
-			[0, 3, 6],
-			[1, 4, 7],
-			[2, 5, 8],
-			[0, 4, 8],
-			[2, 4, 6]
-		];
-		for (let i = 0; i < wCombos.length; i++) {
-			const [a, b, c] = wCombos[i];
-			if (
-				wArray[a] &&
-				wArray[a] === wArray[b] &&
-				wArray[a] === wArray[c]
-			) {
-				return wArray[a];
-			}
-		}
-		return null;
+	resetBoard = () => {
+		this.setState({
+			boxValues: ["", "", "", "", "", "", "", "", ""]
+		});
 	};
 
+	checkWinningCombo = (winningCombo, wArray) => {
+		var successfulMatches = 0;
+		for (var i = 0; i < winningCombo.length; i++) {
+			if (winningCombo[i] == 1) {
+				if (wArray[i] == this.props.player) {
+					successfulMatches++;
+					if (successfulMatches > 2) return this.props.player;
+				}
+			}
+		}
+	};
+	pickWinner = wArray => {
+		const wCombos = [
+			[1, 1, 1, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 1, 1, 1, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 1, 1, 1],
+			[1, 0, 0, 1, 0, 0, 1, 0, 0],
+			[0, 1, 0, 0, 1, 0, 0, 1, 0],
+			[0, 0, 1, 0, 0, 1, 0, 0, 1],
+			[1, 0, 0, 0, 1, 0, 0, 0, 1],
+			[0, 0, 1, 0, 1, 0, 1, 0, 0]
+		];
+		wCombos.forEach(winningCombo => {
+			var winner = null;
+			winner = this.checkWinningCombo(winningCombo, wArray);
+			if (winner != null) {
+				this.props.onWinner(this.props.player);
+			}
+		});
+		return null;
+	};
 	upDateMove = index => {
 		var newBoxValue = this.state.boxValues.map((item, i) => {
 			if (i == index) {
@@ -188,6 +202,16 @@ export class GameBoard extends React.Component {
 								: ""}
 					</div>
 				</div>
+				<p className="lead">
+					<a
+						className="btn btn-lg mt-5 resetButton"
+						onClick={this.resetBoard}
+						role="button">
+						<strong>
+							<strong>RESET</strong>
+						</strong>
+					</a>
+				</p>
 			</div>
 		);
 	}
@@ -195,5 +219,6 @@ export class GameBoard extends React.Component {
 
 GameBoard.propTypes = {
 	switchPlayer: PropTypes.func,
-	player: PropTypes.string
+	player: PropTypes.string,
+	onWinner: PropTypes.func
 };

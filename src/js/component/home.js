@@ -10,6 +10,9 @@ export class Home extends React.Component {
 			winner: null
 		};
 	}
+	onWinner = winner => {
+		this.setState({ winner: winner });
+	};
 	switchPlayer = () => {
 		this.setState({ player: this.state.player == "X" ? "O" : "X" });
 	};
@@ -23,20 +26,12 @@ export class Home extends React.Component {
 						Tic Tac Toe board in React.js
 					</strong>
 				</h1>
+				<div>The Winner is {this.state.winner}</div>
 				<GameBoard
 					switchPlayer={this.switchPlayer}
 					player={this.state.player}
+					onWinner={this.onWinner}
 				/>
-				<p className="lead">
-					<a
-						className="btn btn-lg mt-5 resetButton"
-						href=""
-						role="button">
-						<strong>
-							<strong>RESET</strong>
-						</strong>
-					</a>
-				</p>
 			</div>
 		);
 	}
